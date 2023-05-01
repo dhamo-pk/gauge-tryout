@@ -1,0 +1,6 @@
+getgauge
+webdriver-manager
+selenium
+playwright
+requests
+protobuf
