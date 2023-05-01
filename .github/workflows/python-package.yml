@@ -6,14 +6,19 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Install Gauge
-        run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 023EDB0B
-          echo deb https://downloads.gauge.org/stable/ | sudo tee -a /etc/apt/sources.list.d/gauge.list
-          sudo apt-get update
-          sudo apt-get install gauge
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install Gauge and Python plugin
+      run: |
+        wget -qO - https://downloads.gauge.org/stable | sudo bash
+        gauge install python
+        gauge install html-report
+
 
       - name: Install dependencies
         run: |
