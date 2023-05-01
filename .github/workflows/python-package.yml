@@ -16,7 +16,7 @@ jobs:
 
       - name: Install and run
         run: |
-          curl -SsL https://downloads.gauge.org/stable | run-as root bash
+          curl -SsL https://downloads.gauge.org/stable -o gauge-installer.sh
           gauge install python
           gauge install html-report
           python -m pip install --upgrade pip
