@@ -16,16 +16,16 @@ jobs:
 
       - name: Install and run
         run: |
-        wget -qO - https://downloads.gauge.org/stable | sudo bash
-        gauge install python
-        gauge install html-report
-        python -m pip install --upgrade pip
-        gauge install python
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        sudo apt-get update
-        sudo apt-get install -y protobuf-compiler
-        gauge run business_functions/specs/ --simple-console --simple-html-report --simple-csv-report --simple-json-report
-        working-directory: ${{ github.workspace }}
+          wget -qO - https://downloads.gauge.org/stable | sudo bash
+          gauge install python
+          gauge install html-report
+          python -m pip install --upgrade pip
+          gauge install python
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
+          gauge run business_functions/specs/ --simple-console --simple-html-report --simple-csv-report --simple-json-report
+          working-directory: ${{ github.workspace }}
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
