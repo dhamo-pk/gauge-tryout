@@ -6,19 +6,18 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
 
-    - name: Install Gauge and Python plugin
-      run: |
-        wget -qO - https://downloads.gauge.org/stable | sudo bash
-        gauge install python
-        gauge install html-report
-
+      - name: Install Gauge and Python plugin
+        run: |
+          wget -qO - https://downloads.gauge.org/stable | sudo bash
+          gauge install python
+          gauge install html-report
 
       - name: Install dependencies
         run: |
