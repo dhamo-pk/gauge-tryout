@@ -24,7 +24,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           sudo apt-get update
           sudo apt-get install -y protobuf-compiler
-          gauge run business_functions/specs/ --simple-console --simple-html-report --simple-csv-report --simple-json-report
+          gauge run business_functions/specs/ 
           working-directory: ${{ github.workspace }}
 
       - name: Upload test results
