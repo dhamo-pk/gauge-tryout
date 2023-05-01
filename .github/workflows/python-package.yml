@@ -16,14 +16,15 @@ jobs:
 
       - name: Install and run
         run: |
-          curl -SsL https://downloads.gauge.org/stable -o gauge-installer.sh
-          gauge install python
-          gauge install html-report
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          sudo apt-get update
-          sudo apt-get install -y protobuf-compiler
-          gauge run business_functions/specs/ --simple-console --simple-html-report --simple-csv-report --simple-json-report
+        wget -qO - https://downloads.gauge.org/stable | sudo bash
+        gauge install python
+        gauge install html-report
+        python -m pip install --upgrade pip
+        gauge install python
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        sudo apt-get update
+        sudo apt-get install -y protobuf-compiler
+        gauge run business_functions/specs/ --simple-console --simple-html-report --simple-csv-report --simple-json-report
         working-directory: ${{ github.workspace }}
 
       - name: Upload test results
